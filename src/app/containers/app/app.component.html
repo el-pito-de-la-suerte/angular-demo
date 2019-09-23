@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <span>
+                    Welcome to my Reliability Engineering Code Challenge!
+                </span>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-sidenav-container class="main-container">
+            <mat-sidenav #sidenav mode="side" class="main-sidenav" opened>
+                <mat-list>
+                    <mat-list-item>
+                        <button mat-button (click)="onNewOutage()" >
+                            New outage
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <button mat-button (click)="onFilter(null)" >
+                            Show all
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <button mat-button (click)="onFilter(outageStatus.Open)" >
+                            Show only open items
+                        </button>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <button mat-button (click)="onFilter(outageStatus.Closed)" >
+                            Show only closed items
+                        </button>
+                    </mat-list-item>
+                </mat-list>
+            </mat-sidenav>
+            <mat-sidenav-content class="main-content">
+                <single-outage *ngFor="let outage of outages$ | async" 
+                                [outage]="outage">
+                </single-outage>
+            </mat-sidenav-content>
+        </mat-sidenav-container>  
+    </body>
+</html>
+
+

@@ -1,0 +1,16 @@
+<div>
+    <form class="form">
+        <mat-form-field class="full-width">
+            <input matInput cdkFocusInitial placeholder="Message" [(ngModel)]="message" name="message">
+        </mat-form-field>
+        <!-- let's assume that you can't close an outage if it's new -->
+        <mat-checkbox *ngIf="outageId" [(ngModel)]="closeOutage" name="closeOutage">
+            Close outage
+        </mat-checkbox>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [disabled]="message.trim() === ''" *ngIf="outageId" (click)="onAddMessage()" >Add message</button>
+    <button mat-button *ngIf="!outageId" (click)="onAddOutage()" >Add outage</button>
+    <button mat-button (click)="onCancel()" cdkFocusInitial >Cancel</button>
+</div>

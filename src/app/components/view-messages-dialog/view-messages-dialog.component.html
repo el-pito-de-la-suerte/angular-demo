@@ -1,0 +1,8 @@
+<ol>
+    <li *ngFor="let item of data">
+        {{ item }}
+    </li>
+</ol>
+<div mat-dialog-actions>
+    <button mat-button cdkFocusInitial (click)="onClose()">Close</button>
+</div>

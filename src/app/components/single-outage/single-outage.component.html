@@ -1,0 +1,47 @@
+
+<mat-card class="main-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image">
+            <i *ngIf="outage.status === outageStatus.Open" class="material-icons orange600">
+                warning
+            </i>
+            <i *ngIf="outage.status === outageStatus.Closed" class="material-icons">
+                done
+            </i>
+        </div>
+        <mat-card-title>
+            Outage {{ outage.statusStr }}
+        </mat-card-title>
+        <mat-card-subtitle>
+            Outage Id: {{ outage.outageId }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <!-- display a brief summary about this Outage -->
+        <div>
+            <strong>Started:</strong>
+            {{ outage.startDateStr }}
+        </div>
+        <div *ngIf="outage.status === outageStatus.Closed" >
+            <strong>Closed:</strong>
+            {{ outage.endDateStr }}
+         </div>
+         <div>
+            <strong>Duration:</strong>
+            {{ outage.durationStr }}
+         </div>
+         <div>
+            <strong>Messages:</strong>
+            {{ (outage.messages || []).length }}
+            <a *ngIf="(outage.messages || []).length > 1" href="#" (click)="onViewMessages()">View</a>
+        </div>
+         <div>
+            <strong>Last Message:</strong>
+            {{ outage.lastMessage }}
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button *ngIf="outage.status === outageStatus.Closed" mat-button (click)="onRemoveOutage()">Remove this outage</button>
+        <button *ngIf="outage.status === outageStatus.Open" mat-button (click)="onAddMessage()">Add a new message / close this outage</button>
+    </mat-card-actions>
+</mat-card>
