@@ -10,7 +10,7 @@ Misc comments:
 - All code is strongly typed.
 - The main "building block" for an outage is in models/outage.ts
 - As soon as the component is loaded, the application is loading some mock outage data.
-- I added some unit test in the reducers, mainly to test that the actions are modifing the state correctly (src\app\reducers\outage-reducers.spec.ts)
+- I added some unit tests in the reducer, mainly to test that the actions are modifing the state correctly (src\app\reducers\outage-reducers.spec.ts)
 
 ## Directory structure
 
